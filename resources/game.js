@@ -147,6 +147,3 @@ function gameLoop() {
 
     requestAnimationFrame(gameLoop);
 }
-
-// Démarrer le jeu
-gameLoop();
