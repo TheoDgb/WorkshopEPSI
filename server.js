@@ -12,5 +12,5 @@ app.get('/', (req, res) => {
 app.use(express.static('resources'));
 
 app.listen(port, () => {
-    console.log(`Serveur en écoute sur le port ${port}`);
+    console.log(`Serveur en écoute sur le port ${port} : http://localhost:${port}`);
 });
