@@ -10,7 +10,7 @@
  let peakDuration = 0; // Durée restante du pic
 
  // Fonction pour simuler la pression artérielle (systolique et diastolique)
- function generateBloodPressure(t) {
+ function generateBloodPressure() {
      const baseSystolic = 120; // Valeur systolique de base
      const baseDiastolic = 80;  // Valeur diastolique de base
 
@@ -41,7 +41,7 @@
              currentSystolic = baseSystolic + systolicFluctuation + stressSpike; // Mémoriser la valeur du pic pour la systolique
              currentDiastolic = baseDiastolic + diastolicFluctuation + diastolicSpike; // Mémoriser la valeur du pic pour la diastolique
 
-             peakDuration = Math.random() * 3 + 1; // Durée de 3 à 8 secondes
+             peakDuration = Math.random() * 3 + 1; // Durée de 1 à 4 secondes
          } else {
              currentSystolic = baseSystolic + systolicFluctuation; // Pas de pic, juste fluctuation normale pour la systolique
              currentDiastolic = baseDiastolic + diastolicFluctuation; // Pas de pic, juste fluctuation normale pour la diastolique
