@@ -44,12 +44,22 @@ function checkCollision(player, projectile) {
     );
 }
 
+// Fonction pour réinitialiser la position du joueur
+function resetPlayerPosition() {
+    player.x = canvasWidth / 2
+    player.y = canvasHeight - 50,
+    player.speed = 0;
+    for (let key in keys) {
+        keys[key] = false;
+    }
+}
+
 // Dessiner la barre de vie
 function drawHealthBar() {
     const healthBarWidth = 200;
     const healthBarHeight = 20;
     const healthBarX = 20;
-    const healthBarY = 20;
+    const healthBarY = 20;0
 
     // Dessiner l'arrière-plan de la barre de vie
     ctx.fillStyle = 'red';
@@ -109,6 +119,7 @@ function gameLoop() {
                 alert("Game Over!");
                 player.health = 100; // Remettre la santé à 100 pour recommencer
                 projectiles.length = 0; // Réinitialiser les projectiles
+                resetPlayerPosition();
             }
         }
 
