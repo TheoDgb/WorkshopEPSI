@@ -11,6 +11,9 @@ Imaginer un projet innovant et réaliser un prototype de développement informat
   - Jeu "bullet hell", lié aux valeurs de pression artérielle de l'utilisateur / joueur, ajoutant divers malus en fonction de son niveau de stress
   - IA : let us cook
 
-### Lancer le serv
+### Installer les dépendances du projet
+    npm install
+
+### Lancer le serveur Node.js
     npm start server.js
     ==> http://localhost:3000/
