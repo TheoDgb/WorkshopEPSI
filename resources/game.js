@@ -15,7 +15,8 @@ const player = {
     maxSpeed: 5,
     acceleration: 0.1,
     deceleration: 0.1,
-    color: 'blue'
+    color: 'blue',
+    health: 100 // Ajout des points de vie du joueur
 };
 
 // Projectiles
@@ -32,6 +33,37 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keyup', (event) => {
     keys[event.key] = false;
 });
+
+// Fonction pour détecter les collisions
+function checkCollision(player, projectile) {
+    return (
+        player.x < projectile.x + projectile.width &&
+        player.x + player.width > projectile.x &&
+        player.y < projectile.y + projectile.height &&
+        player.y + player.height > projectile.y
+    );
+}
+
+// Dessiner la barre de vie
+function drawHealthBar() {
+    const healthBarWidth = 200;
+    const healthBarHeight = 20;
+    const healthBarX = 20;
+    const healthBarY = 20;
+
+    // Dessiner l'arrière-plan de la barre de vie
+    ctx.fillStyle = 'red';
+    ctx.fillRect(healthBarX, healthBarY, healthBarWidth, healthBarHeight);
+
+    // Dessiner la vie restante (vert)
+    const currentHealthWidth = (player.health / 100) * healthBarWidth;
+    ctx.fillStyle = 'green';
+    ctx.fillRect(healthBarX, healthBarY, currentHealthWidth, healthBarHeight);
+
+    // Ajouter un contour à la barre de vie
+    ctx.strokeStyle = 'black';
+    ctx.strokeRect(healthBarX, healthBarY, healthBarWidth, healthBarHeight);
+}
 
 // Boucle d'animation
 function gameLoop() {
@@ -65,6 +97,19 @@ function gameLoop() {
         ctx.fillStyle = 'red';
         ctx.fillRect(projectile.x, projectile.y, projectile.width, projectile.height);
 
+        // Vérifier les collisions
+        if (checkCollision(player, projectile)) {
+            player.health -= 10; // Le joueur perd 10 points de vie
+            projectiles.splice(index, 1); // Retirer le projectile après collision
+
+            // Fin de partie si la vie est épuisée
+            if (player.health <= 0) {
+                alert("Game Over!");
+                player.health = 100; // Remettre la santé à 100 pour recommencer
+                projectiles.length = 0; // Réinitialiser les projectiles
+            }
+        }
+
         // Supprimer les projectiles hors du canvas
         if (projectile.y > canvasHeight) {
             projectiles.splice(index, 1);
@@ -82,6 +127,9 @@ function gameLoop() {
         };
         projectiles.push(projectile);
     }
+
+    // Dessiner la barre de vie
+    drawHealthBar();
 
     requestAnimationFrame(gameLoop);
 }
