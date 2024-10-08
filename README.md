@@ -3,7 +3,7 @@
 ## Objectif
 Imaginer un projet innovant et réaliser un prototype de développement informatique pour de la prévention sur le thème de la santé dans un groupe de 4 personnes
 
-==> Réaliser un jeu permettant la prévention du stress
+==> Concevoir un jeu visant à prévenir le stress
 - Hardware : capteur biométrique permettant de récupérer et d'envoyer à l'application web la pression artérielle de l'utilisateur / joueur
 - Application web
   - Backend : Node.js
