@@ -5,7 +5,7 @@ const port = 3000;
 
 // Route pour servir le fichier HTML
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 app.listen(port, () => {
