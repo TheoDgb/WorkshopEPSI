@@ -5,6 +5,7 @@
     <title>Workshop EPSI</title>
     <!--INCLURE BOOTSTRAP & PLOTLY-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
@@ -18,7 +19,7 @@
         <div class="row">
             <div class="col-8">
                 <!-- Ajout de la zone de jeu -->
-                <canvas id="gameCanvas" width="800" height="600" style="border:1px solid #000;"></canvas>
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
             </div>
             <div class="col-4">
                 graph
@@ -27,19 +28,3 @@
     </div>
 </body>
 </html>
-
-<style>
-    body {
-        background-color: white;
-        font-family: Arial, sans-serif;
-    }
-    #graph {
-        width: 80%;
-        margin: auto;
-    }
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        margin-top: 20px;
-    }
-</style>
