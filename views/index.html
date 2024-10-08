@@ -9,22 +9,22 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">WorkShop EPSI</a>
-        </div>
-    </nav>
-    <br>
-    <div class="d-flex justify-content-center">
-        <button id="startButton" class="btn btn-primary">Start</button>
-    </div>
-    <br><br>
     <div class="container">
+        <br>
+        <div class="title d-flex justify-content-center">
+            CALM or CHAOS
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <button id="startButton" class="btn btn-primary fs-4 mx-2">Start</button>
+            <button id="stopButton" class="btn btn-secondary disabled fs-4 mx-2">Stop</button>
+        </div>
+        <br><br>
         <div class="row">
-            <div class="col-8">
+            <div class="col-12 col-lg-8 d-flex justify-content-center align-items-center" id="game-col">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
             </div>
-            <div class="col-4" id="graphe">
+            <div class="col-12 col-lg-4" id="graph-col">
                 <div id="graph"></div>
                 <div id="classification"></div>
             </div>
@@ -33,18 +33,32 @@
 </body>
 </html>
 <script>
-    // Get the start button element
     const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
 
-    // Attach the click event listener
     startButton.addEventListener('click', function() {
-        startButton.disabled = true;
+        startButton.classList.add('disabled');
         startButton.classList.remove('btn-primary');
         startButton.classList.add('btn-secondary');
+        stopButton.classList.remove('disabled');
+        stopButton.classList.remove('btn-secondary');
+        stopButton.classList.add('btn-danger');
 
-        // Démarrer le jeu
+        // Start the game
         gameLoop();
     });
+
+    stopButton.addEventListener('click', function() {
+        stopButton.classList.add('disabled');
+        stopButton.classList.remove('btn-danger');
+        stopButton.classList.add('btn-secondary');
+        startButton.classList.remove('disabled');
+        startButton.classList.remove('btn-secondary');
+        startButton.classList.add('btn-primary');
+
+        // Stop the game
+        //gameStop();
+    })
 </script>
 <script src="/graph.js"></script>
 <script src="/game.js"></script>

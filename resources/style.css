@@ -1,17 +1,25 @@
     body {
-        background-color: white;
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #0D2938, #ffffff);
         font-family: Arial, sans-serif;
     }
-    #graph {
-        width: 100%;
-        margin: auto;
+
+    .title {
+        color: white;
+        font-size: 60px;
+        font-weight: bold;
     }
+
     button {
-        padding: 10px 20px;
-        font-size: 16px;
-        margin-top: 20px;
+
+        width: 250px;
+    }
+
+    #graph-col {
+        background-color: #ffffff;
     }
 
     #gameCanvas {
-    border:1px solid #000;
+        border:1px solid #ffffff;
+        background: radial-gradient(circle, #164560, #113549);
     }
