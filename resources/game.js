@@ -93,7 +93,9 @@ function gameLoop() {
 
     // Dessiner les projectiles
     projectiles.forEach((projectile, index) => {
-        projectile.y += projectile.speed;
+        projectile.y += projectile.speedY;  // Vitesse verticale
+        projectile.x += projectile.speedX;  // Vitesse horizontale
+
         ctx.fillStyle = 'red';
         ctx.fillRect(projectile.x, projectile.y, projectile.width, projectile.height);
 
@@ -111,7 +113,7 @@ function gameLoop() {
         }
 
         // Supprimer les projectiles hors du canvas
-        if (projectile.y > canvasHeight) {
+        if (projectile.y > canvasHeight || projectile.x < 0 || projectile.x > canvasWidth) {
             projectiles.splice(index, 1);
         }
     });
@@ -119,11 +121,12 @@ function gameLoop() {
     // Générer des projectiles à intervalles réguliers
     if (Math.random() < 0.05) {
         const projectile = {
-            x: Math.random() * canvasWidth,
+            x: Math.random() * canvasWidth,  // Position aléatoire sur l'axe X
             y: -10,
             width: 10,
             height: 10,
-            speed: 4
+            speedY: 2 + Math.random() * 3,  // Vitesse verticale aléatoire entre 2 et 5
+            speedX: (Math.random() - 0.5) * 4  // Vitesse horizontale aléatoire (vers la gauche ou la droite)
         };
         projectiles.push(projectile);
     }
