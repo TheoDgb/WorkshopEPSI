@@ -11,32 +11,49 @@ const player = {
     y: canvasHeight - 50,
     width: 50,
     height: 50,
-    speed: 5,
+    speed: 0,
+    maxSpeed: 5,
+    acceleration: 0.1,
+    deceleration: 0.1,
     color: 'blue'
 };
 
 // Projectiles
 const projectiles = [];
 
-// Mouvement du joueur
+// Garder une trace des touches pressées
+const keys = {};
+
+// Ajouter des écouteurs pour gérer les touches pressées et relâchées
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft' && player.x > 0) {
-        player.x -= player.speed;
-    }
-    if (event.key === 'ArrowRight' && player.x + player.width < canvasWidth) {
-        player.x += player.speed;
-    }
-    if (event.key === 'ArrowUp' && player.y > 0) {
-        player.y -= player.speed;
-    }
-    if (event.key === 'ArrowDown' && player.y + player.height < canvasHeight) {
-        player.y += player.speed;
-    }
+    keys[event.key] = true;
+});
+
+document.addEventListener('keyup', (event) => {
+    keys[event.key] = false;
 });
 
 // Boucle d'animation
 function gameLoop() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    // Accélération et décélération du joueur
+    if (keys['ArrowLeft'] && player.x > 0) {
+        player.speed = Math.min(player.maxSpeed, player.speed + player.acceleration);
+        player.x -= player.speed;
+    } else if (keys['ArrowRight'] && player.x + player.width < canvasWidth) {
+        player.speed = Math.min(player.maxSpeed, player.speed + player.acceleration);
+        player.x += player.speed;
+    } else if (keys['ArrowUp'] && player.y > 0) {
+        player.speed = Math.min(player.maxSpeed, player.speed + player.acceleration);
+        player.y -= player.speed;
+    } else if (keys['ArrowDown'] && player.y + player.height < canvasHeight) {
+        player.speed = Math.min(player.maxSpeed, player.speed + player.acceleration);
+        player.y += player.speed;
+    } else {
+        // Décélération quand aucune touche n'est pressée
+        player.speed = Math.max(0, player.speed - player.deceleration);
+    }
 
     // Dessiner le joueur
     ctx.fillStyle = player.color;
