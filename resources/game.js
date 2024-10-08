@@ -48,7 +48,7 @@ function checkCollision(player, projectile) {
 function resetPlayerPosition() {
     player.x = canvasWidth / 2
     player.y = canvasHeight - 50,
-    player.speed = 0;
+        player.speed = 0;
     for (let key in keys) {
         keys[key] = false;
     }
@@ -59,7 +59,7 @@ function drawHealthBar() {
     const healthBarWidth = 200;
     const healthBarHeight = 20;
     const healthBarX = 20;
-    const healthBarY = 20;0
+    const healthBarY = 20;
 
     // Dessiner l'arrière-plan de la barre de vie
     ctx.fillStyle = 'red';

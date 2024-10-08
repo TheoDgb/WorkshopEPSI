@@ -32,6 +32,19 @@
     </div>
 </body>
 </html>
+<script>
+    // Get the start button element
+    const startButton = document.getElementById('startButton');
 
+    // Attach the click event listener
+    startButton.addEventListener('click', function() {
+        startButton.disabled = true;
+        startButton.classList.remove('btn-primary');
+        startButton.classList.add('btn-secondary');
+
+        // Démarrer le jeu
+        gameLoop();
+    });
+</script>
 <script src="/graph.js"></script>
 <script src="/game.js"></script>
