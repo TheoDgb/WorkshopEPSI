@@ -1,0 +1,17 @@
+    body {
+        background-color: white;
+        font-family: Arial, sans-serif;
+    }
+    #graph {
+        width: 80%;
+        margin: auto;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    #gameCanvas {
+    border:1px solid #000;
+    }
