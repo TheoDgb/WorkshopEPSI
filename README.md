@@ -4,7 +4,9 @@
 Imaginer un projet innovant et réaliser un prototype de développement informatique pour de la prévention sur le thème de la santé dans un groupe de 4 personnes
 
 ==> Concevoir un jeu visant à prévenir le stress
-- Hardware : capteur de pression artérielle permettant de récupérer et d'envoyer à l'application web la pression artérielle de l'utilisateur / joueur
+- Hardware
+  - Capteur de pression artérielle
+  - Carte Arduino programmé en langage C permettant de récupérer, convertir et d'envoyer à l'application web les données de la pression artérielle de l'utilisateur / joueur
 - Application web
   - Backend : Node.js / Express.js
   - Graphique en temps réel de pression artérielle : Plotly
