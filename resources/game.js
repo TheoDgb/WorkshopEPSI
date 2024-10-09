@@ -6,7 +6,7 @@ const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
 
 // Joueur
-const player = {
+export const player = {   // export permet l'utilisation des coordonnées du joueur par d'autres fichiers
     x: canvasWidth / 2,
     y: canvasHeight - 50,
     width: 50,
@@ -147,3 +147,4 @@ function gameLoop() {
 
     requestAnimationFrame(gameLoop);
 }
+export { gameLoop };

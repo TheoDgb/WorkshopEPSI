@@ -1,4 +1,6 @@
- // Variables de stockage
+import { player } from './game.js';
+import { applyBlur, applyMovementMalus } from './malus.js';
+// Variables de stockage
  let xData = [];
  let yData = [];
  let intervalID = null;
@@ -129,6 +131,9 @@
 
          // Ajoute un effet de flou selon le seuil de tension
          applyBlur(bloodPressure.systolic, bloodPressure.diastolic);
+
+         // Ajoute du bruit (fluctuation aléatoire) aux déplacements du joueur s'il dépasse un certain seuil de
+         applyMovementMalus(player,bloodPressure.systolic, bloodPressure.diastolic);
 
          // Limiter l'affichage à 20 secondes de données visibles
          if (elapsedTime > 20) {
