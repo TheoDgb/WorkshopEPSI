@@ -127,6 +127,19 @@
          // Afficher l'état sous le graphique
          document.getElementById('classification').innerText = `État de la Tension : ${classification}`;
 
+          // Appliquer un flou selon le seuil de tension atteint
+                 const gameCanvas = document.getElementById('gameCanvas');
+                 if (bloodPressure.systolic >= 180 || bloodPressure.diastolic >= 120) {
+                     gameCanvas.style.filter = 'blur(5px)';
+                 }
+
+                 if (bloodPressure.systolic >= 140 || bloodPressure.diastolic >= 90) {
+                                      gameCanvas.style.filter = 'blur(2px)';
+                                  }
+                 else {
+                     gameCanvas.style.filter = 'none';
+                 }
+
          // Limiter l'affichage à 20 secondes de données visibles
          if (elapsedTime > 20) {
              xData.shift();  // Retirer les anciennes valeurs
