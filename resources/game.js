@@ -147,4 +147,11 @@ function gameLoop() {
 
     requestAnimationFrame(gameLoop);
 }
-export { gameLoop };
+
+function gameStop() {
+    alert("Partie arrêtée");
+    player.health = 100;
+    projectiles.length = 0;
+    resetPlayerPosition();
+}
+export { gameLoop, gameStop };

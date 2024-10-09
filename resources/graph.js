@@ -1,4 +1,4 @@
-import { player, gameLoop } from './game.js';
+import { player, gameLoop, gameStop } from './game.js';
 import { applyBlur, applyMovementMalus } from './malus.js';
 // Variables de stockage
  let xData = [];
@@ -171,5 +171,5 @@ stopButton.addEventListener('click', function() {
     startButton.classList.add('btn-primary');
 
     // Stop the game
-    //gameStop();
+    gameStop();
 })
