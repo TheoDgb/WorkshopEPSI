@@ -109,7 +109,7 @@
      startTime = Date.now();  // Temps de départ
      intervalID = setInterval(() => {
          let elapsedTime = (Date.now() - startTime) / 1000;  // Temps écoulé en secondes
-         let bloodPressure = generateBloodPressure(elapsedTime);  // Générer la pression artérielle
+         let bloodPressure = generateBloodPressure(elapsedTime);  // Générer la pression artérielle.
 
          // Ajouter les nouvelles données
          xData.push(elapsedTime);
@@ -127,18 +127,8 @@
          // Afficher l'état sous le graphique
          document.getElementById('classification').innerText = `État de la Tension : ${classification}`;
 
-          // Appliquer un flou selon le seuil de tension atteint
-                 const gameCanvas = document.getElementById('gameCanvas');
-                 if (bloodPressure.systolic >= 180 || bloodPressure.diastolic >= 120) {
-                     gameCanvas.style.filter = 'blur(5px)';
-                 }
-
-                 if (bloodPressure.systolic >= 140 || bloodPressure.diastolic >= 90) {
-                                      gameCanvas.style.filter = 'blur(2px)';
-                                  }
-                 else {
-                     gameCanvas.style.filter = 'none';
-                 }
+         // Ajoute un effet de flou selon le seuil de tension
+         applyBlur(bloodPressure.systolic, bloodPressure.diastolic);
 
          // Limiter l'affichage à 20 secondes de données visibles
          if (elapsedTime > 20) {
@@ -146,6 +136,7 @@
              yData.shift();
          }
      }, 100);  // Mise à jour toutes les 100 ms
+
  }
 
  // Ajouter un écouteur d'événements pour le bouton Start
