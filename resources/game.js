@@ -19,8 +19,19 @@ export const player = {   // export permet l'utilisation des coordonnées du jou
     health: 100 // Ajout des points de vie du joueur
 };
 
-const projectileImage = new Image();
-projectileImage.src = './croissant.png';
+// Liste d'images comme projectiles
+const projectileImages = [
+    './croissant.png',
+    './burger.png',
+    './haribo.png'
+];
+
+// Charger chaque image dans un tableau d'objets Image
+const loadedImages = projectileImages.map((src) => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
 
 // Projectiles
 const projectiles = [];
@@ -105,14 +116,11 @@ function gameLoop() {
     ctx.fillRect(player.x, player.y, player.width, player.height);
 
 
-    const projectileHeight = 30;  // Hauteur redimensionnée du projectile
-    const aspectRatio = projectileImage.width / projectileImage.height;  // Calculer le ratio de l'image originale
-    const projectileWidth = projectileHeight * aspectRatio;  // Ajuster la largeur en fonction de la hauteur pour maintenir le ratio
+
 
     // Fonction de dessin des projectiles:
     function drawProjectile(projectile) {
-        // Dessiner l'image redimensionnée
-        ctx.drawImage(projectileImage, projectile.x, projectile.y, projectileWidth, projectileHeight);
+        ctx.drawImage(projectile.image, projectile.x, projectile.y, projectile.width, projectile.height);
     }
 
     // Dessiner les projectiles
@@ -145,11 +153,17 @@ function gameLoop() {
 
     // Générer des projectiles à intervalles réguliers
     if (Math.random() < 0.05) {
+        const randomImageIndex = Math.floor(Math.random() * loadedImages.length);  // Sélectionner un index aléatoire
+        const selectedImage = loadedImages[randomImageIndex];  // Choisir l'image aléatoire
+        const projectileHeight = 60;  // Hauteur redimensionnée du projectile
+        const aspectRatio = selectedImage.width / selectedImage.height;
+        const projectileWidth = projectileHeight * aspectRatio;  // Ajuster la largeur en fonction de la hauteur pour maintenir le ratio
         const projectile = {
             x: Math.random() * canvasWidth,  // Position aléatoire sur l'axe X
             y: -10,
             width: projectileWidth,
             height: projectileHeight,
+            image: selectedImage,
             speedY: 2 + Math.random() * 3,  // Vitesse verticale aléatoire entre 2 et 5
             speedX: (Math.random() - 0.5) * 4  // Vitesse horizontale aléatoire (vers la gauche ou la droite)
         };
