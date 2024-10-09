@@ -1,4 +1,4 @@
-import { player } from './game.js';
+import { player, gameLoop } from './game.js';
 import { applyBlur, applyMovementMalus } from './malus.js';
 // Variables de stockage
  let xData = [];
@@ -146,3 +146,30 @@ import { applyBlur, applyMovementMalus } from './malus.js';
 
  // Ajouter un écouteur d'événements pour le bouton Start
  document.getElementById('startButton').addEventListener('click', startSimulation);
+
+const startButton = document.getElementById('startButton');
+const stopButton = document.getElementById('stopButton');
+
+startButton.addEventListener('click', function() {
+    startButton.classList.add('disabled');
+    startButton.classList.remove('btn-primary');
+    startButton.classList.add('btn-secondary');
+    stopButton.classList.remove('disabled');
+    stopButton.classList.remove('btn-secondary');
+    stopButton.classList.add('btn-danger');
+
+    // Start the game
+    gameLoop();
+});
+
+stopButton.addEventListener('click', function() {
+    stopButton.classList.add('disabled');
+    stopButton.classList.remove('btn-danger');
+    stopButton.classList.add('btn-secondary');
+    startButton.classList.remove('disabled');
+    startButton.classList.remove('btn-secondary');
+    startButton.classList.add('btn-primary');
+
+    // Stop the game
+    //gameStop();
+})
