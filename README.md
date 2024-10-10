@@ -11,7 +11,7 @@ Imaginer un projet innovant et réaliser un prototype de développement informat
   - Backend : Node.js / Express.js
   - Graphique en temps réel de pression artérielle : Plotly
   - Jeu "bullet hell", lié aux valeurs de pression artérielle de l'utilisateur / joueur, ajoutant divers malus en fonction de son niveau de stress
-  - IA : Comparer les performances du joueur au fil du temps, montrant comment son niveau de stress s'améliore à mesure qu'il pratique. Si elle détecte que le joueur gère mieux son stress, elle pourrait proposer des défis plus complexes, tandis que si elle constate une augmentation du stress, elle pourrait proposer des défis plus relaxants.
+  - IA : Reconnaissance des performances du joueur au fil du temps. Si elle détecte que le joueur gère mieux son stress face aux malus, elle pourrait proposer des défis plus complexes ou à l'inverse plus relaxants.
 
 ### Installer les dépendances du projet
     npm install
