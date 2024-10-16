@@ -3,7 +3,7 @@
 ## Objectif
 En 1 semaine, imaginer un projet innovant et réaliser un prototype de développement informatique au service de la santé dans un groupe de 4 personnes
 
-==> Concevoir un jeu visant à sensibiliser à la prévention du stress.
+==> Concevoir un jeu visant à sensibiliser à la prévention du stress
 - Hardware (remplacé par un simulateur de pression artérielle en raison des contraintes)
   - Capteur de pression artérielle
   - Carte Arduino programmé en langage C permettant de récupérer, convertir et d'envoyer à l'application web les données de la pression artérielle de l'utilisateur / joueur
